@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miraç Büyük — Public Sector Engineer & Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #8b5cf6;
+            --accent-hover: #7c3aed;
+            --border: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .title {
+            font-size: 17px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .bio {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .project-title:hover {
+            color: var(--accent);
+        }
+
+        .project-link {
+            font-size: 13px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header / Profil Bilgileri -->
+        <header>
+            <h1>Miraç Büyük</h1>
+            <div class="title">Public Sector Engineer & Cross-Platform Developer</div>
+            <p class="bio">
+                Ankara, Türkiye merkezli kamu sektörü mühendisi ve yazılımcı. Flutter, Dart ve modern web teknolojileri ile ölçeklenebilir mobil ve masaüstü uygulamalar geliştiriyorum.
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/miraccbuyuk" class="social-btn" target="_blank">GitHub</a>
+                <a href="https://instagram.com/miraccbuyuk" class="social-btn" target="_blank">Instagram</a>
+            </div>
+        </header>
+
+        <!-- Projeler Bölümü -->
+        <section>
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">Couple Story</span>
+                        <a href="https://instagram.com/couplestorytr" class="project-link" target="_blank">Instagram ↗</a>
+                    </div>
+                    <p class="project-desc">İlişki takip süreci ve özel anlar için geliştirilmiş mobil uygulama.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">Varlığım</span>
+                        <a href="https://instagram.com/varligimtr" class="project-link" target="_blank">Instagram ↗</a>
+                    </div>
+                    <p class="project-desc">Kişisel varlık ve portföy takibini kolaylaştıran modern mobil uygulama.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">Kocify KPSS</span>
+                        <a href="https://instagram.com/kocifykpsstr" class="project-link" target="_blank">Instagram ↗</a>
+                    </div>
+                    <p class="project-desc">KPSS adayları için kapsamlı sınav hazırlık ve takip uygulaması.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Yetenekler Bölümü -->
+        <section>
+            <h2>Tech Stack & Skills</h2>
+            <div class="skills-list">
+                <span class="skill-tag">Flutter</span>
+                <span class="skill-tag">Dart</span>
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">Git / GitHub</span>
+                <span class="skill-tag">Cross-Platform Development</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            © 2026 Miraç Büyük. Built with GitHub Pages.
+        </footer>
+    </div>
+
+</body>
+</html>
