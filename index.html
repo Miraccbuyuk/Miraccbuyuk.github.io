@@ -7,411 +7,126 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
-            /* Aydınlık tema için çok hafif, ferah bir arka plan gradyanı */
             background-image: 
                 radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
                 radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%);
             color: #0f172a;
-            padding: 40px 20px;
+            padding: 24px 16px;
             display: flex;
             justify-content: center;
             min-height: 100vh;
         }
 
-        .wrapper {
-            max-width: 980px;
-            width: 100%;
-        }
+        .wrapper { max-width: 1020px; width: 100%; }
 
-        /* Animasyonlar */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
+            from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-1 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .animate-2 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; opacity: 0; }
-        .animate-3 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; opacity: 0; }
-        .animate-4 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0; }
-        .animate-5 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards; opacity: 0; }
+        .animate-1 { animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-2 { animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards; opacity: 0; }
+        .animate-3 { animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; opacity: 0; }
+        .animate-4 { animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; opacity: 0; }
+        .animate-5 { animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0; }
 
-        /* Üst Menü */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 48px;
-            padding: 0 10px;
+            margin-bottom: 24px;
+            padding: 0 8px;
         }
 
-        .nav-logo {
-            font-weight: 800;
-            font-size: 20px;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: -0.5px;
-        }
+        .nav-logo { font-weight: 800; font-size: 18px; color: #0f172a; display: flex; align-items: center; gap: 8px; letter-spacing: -0.5px; }
+        .nav-logo i { color: #0ea5e9; font-size: 22px; }
+        .nav-links { display: flex; gap: 20px; list-style: none; font-size: 14px; font-weight: 600; }
+        .nav-links a { color: #64748b; text-decoration: none; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+        .nav-links a:hover { color: #0f172a; transform: translateY(-2px); }
+        .nav-links i { font-size: 18px; }
 
-        .nav-logo i {
-            color: #0ea5e9;
-            font-size: 26px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .nav-links a {
-            color: #64748b;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-links a:hover {
-            color: #0f172a;
-            transform: translateY(-2px);
-        }
-
-        .nav-links i {
-            font-size: 20px;
-        }
-
-        /* Modern Kart Yapısı */
         .grid-container {
             display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 24px;
-            margin-bottom: 48px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
         }
 
-        @media (max-width: 768px) {
-            .grid-container { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } }
 
         .card {
             background: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 32px;
-            padding: 40px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            padding: 24px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.05);
         }
 
         .card:hover {
             border-color: rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Sol Profil Kartı */
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 24px;
-            border: 4px solid #ffffff;
-            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.2);
-        }
+        .profile-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 16px; border: 3px solid #ffffff; box-shadow: 0 6px 16px rgba(14, 165, 233, 0.15); }
+        .profile-card h1 { font-size: 32px; font-weight: 800; margin: 0 0 8px 0; color: #0f172a; letter-spacing: -0.5px; }
+        .profile-card p { color: #475569; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+        
+        .role-list { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 12px; }
+        .role-list li { font-size: 13px; color: #334155; display: flex; align-items: center; gap: 10px; font-weight: 600; }
+        .role-icon { font-size: 20px; padding: 6px; border-radius: 10px; }
 
-        .profile-card h1 {
-            font-size: 42px;
-            font-weight: 800;
-            margin: 0 0 12px 0;
-            color: #0f172a;
-            letter-spacing: -1px;
-        }
-
-        .profile-card p {
-            color: #475569;
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 32px;
-            max-width: 90%;
-        }
-
-        .role-list {
-            list-style: none;
-            margin-bottom: 36px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .role-list li {
-            font-size: 15px;
-            color: #334155;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-weight: 600;
-        }
-
-        .role-icon {
-            font-size: 24px;
-            padding: 8px;
-            border-radius: 12px;
-        }
-
-        /* Renkli İkon Arka Planları */
         .icon-blue { color: #0ea5e9; background: #e0f2fe; }
         .icon-green { color: #10b981; background: #d1fae5; }
         .icon-purple { color: #8b5cf6; background: #ede9fe; }
         .icon-pink { color: #ec4899; background: #fce7f3; }
         .icon-orange { color: #f59e0b; background: #fef3c7; }
 
-        .btn-group {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
+        .btn-group { display: flex; gap: 12px; align-items: center; }
+        .btn-primary { background: #0f172a; color: #ffffff; padding: 10px 20px; border-radius: 12px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+        .btn-primary:hover { background: #1e293b; transform: translateY(-2px); }
+        .btn-secondary { background: #f1f5f9; color: #0f172a; padding: 10px 20px; border-radius: 12px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; border: 1px solid #e2e8f0; }
+        .btn-secondary:hover { background: #e2e8f0; transform: translateY(-2px); }
 
-        .btn-primary {
-            background: #0f172a;
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: 16px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.4);
-        }
-
-        .btn-primary:hover {
-            background: #1e293b;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.5);
-        }
-
-        .btn-secondary {
-            background: #f1f5f9;
-            color: #0f172a;
-            padding: 14px 28px;
-            border-radius: 16px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
-        }
-
-        .btn-secondary:hover {
-            background: #e2e8f0;
-            transform: translateY(-2px);
-        }
-
-        /* Sağ Taraf Mini Kartlar */
-        .right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .mini-card-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .location-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 24px;
-            font-weight: 700;
-            font-size: 16px;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .skills-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-pill {
-            background: #f8fafc;
-            color: #334155;
-            padding: 10px 16px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .skill-pill i {
-            font-size: 18px;
-        }
-
-        .skill-pill:hover {
-            background: #ffffff;
-            color: #0ea5e9;
-            border-color: #0ea5e9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.1);
-        }
-
-        /* İlgi Alanları Listesi */
-        .interests-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .interests-list li {
-            font-size: 14px;
-            font-weight: 600;
-            color: #334155;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #f8fafc;
-            padding: 14px 18px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-        }
+        .right-column { display: flex; flex-direction: column; gap: 16px; }
+        .mini-card-title { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
         
-        .interests-list li:hover {
-            background: #ffffff;
-            border-color: #cbd5e1;
-            transform: translateX(4px);
-        }
-
-        /* Projeler Bölümü */
-        .section-title {
-            font-size: 26px;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 28px;
-            padding: 32px;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: #0ea5e9;
-            box-shadow: 0 20px 40px -12px rgba(14, 165, 233, 0.15);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .project-logo {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .project-card h3 {
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .project-card p {
-            font-size: 15px;
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
+        .location-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px; font-weight: 700; font-size: 14px; color: #0f172a; display: flex; align-items: center; justify-content: center; gap: 8px; }
         
-        .project-tech {
-            display: flex;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #475569;
-        }
+        .skills-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-pill { background: #f8fafc; color: #334155; padding: 6px 12px; border-radius: 10px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .skill-pill i { font-size: 16px; }
+        .skill-pill:hover { background: #ffffff; color: #0ea5e9; border-color: #0ea5e9; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(14, 165, 233, 0.1); }
+
+        .interests-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .interests-list li { font-size: 13px; font-weight: 600; color: #334155; display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 10px 14px; border-radius: 12px; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .interests-list li:hover { background: #ffffff; border-color: #cbd5e1; transform: translateX(2px); }
+
+        .section-title { font-size: 20px; font-weight: 800; margin-bottom: 16px; color: #0f172a; display: flex; align-items: center; gap: 8px; }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .project-card { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 20px; padding: 20px; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s; position: relative; }
+        .project-card:hover { transform: translateY(-4px); border-color: #0ea5e9; box-shadow: 0 12px 24px -10px rgba(14, 165, 233, 0.15); }
+        .project-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .project-logo { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .project-card h3 { font-size: 16px; font-weight: 800; color: #0f172a; }
+        .project-card p { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 16px; flex-grow: 1; }
         
-        .project-tech span {
-            background: #f1f5f9;
-            padding: 6px 14px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
+        .project-tech { display: flex; gap: 6px; font-size: 11px; font-weight: 600; color: #475569; }
+        .project-tech span { background: #f1f5f9; padding: 4px 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <!-- Üst Menü -->
         <nav class="animate-1">
             <div class="nav-logo">
-                <i class="ph-duotone ph-code-block"></i> Miraç Büyük
+                <i class="ph-duotone ph-code-block"></i> Mira Büyük
             </div>
             <ul class="nav-links">
                 <li><a href="https://github.com/miraccbuyuk" target="_blank"><i class="ph-duotone ph-github-logo"></i> GitHub</a></li>
@@ -419,7 +134,6 @@
             </ul>
         </nav>
 
-        <!-- Bento Grid Alanı -->
         <div class="grid-container">
             <!-- Sol Profil Kartı -->
             <div class="card profile-card animate-2">
@@ -445,93 +159,75 @@
 
             <!-- Sağ Taraf Kartlar -->
             <div class="right-column">
-                <!-- Lokasyon Kartı -->
-                <div class="card animate-3" style="padding: 24px;">
-                    <div class="mini-card-title">
-                        <i class="ph-duotone ph-map-pin" style="color: #10b981; font-size: 24px;"></i> Based In
-                    </div>
-                    <div class="location-box">
-                        <i class="ph-duotone ph-buildings" style="color: #64748b; font-size: 26px;"></i> Ankara, Türkiye
-                    </div>
+                <div class="card animate-3">
+                    <div class="mini-card-title"><i class="ph-duotone ph-map-pin" style="color: #10b981; font-size: 20px;"></i> Based In</div>
+                    <div class="location-box"><i class="ph-duotone ph-buildings" style="color: #64748b; font-size: 20px;"></i> Ankara, Türkiye</div>
                 </div>
 
-                <!-- İlgi Alanları / Yetenekler Kartı -->
-                <!-- İlgi Alanları / Yetenekler Kartı -->
-                <div class="card animate-4" style="padding: 32px;">
-                    <div class="mini-card-title">
-                        <i class="ph-duotone ph-lightning" style="color: #f59e0b; font-size: 24px;"></i> Tech Stack
+                <div class="card animate-4">
+                    <div class="mini-card-title"><i class="ph-duotone ph-lightning" style="color: #f59e0b; font-size: 20px;"></i> Tech Stack</div>
+                    
+                    <div style="font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Core Focus</div>
+                    <div class="skills-wrapper" style="margin-bottom: 16px;">
+                        <div class="skill-pill"><i class="ph-duotone ph-app-window" style="color:#0ea5e9;"></i> Flutter & Dart</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-apple-logo" style="color:#1e293b;"></i> iOS & Android Dev</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-desktop" style="color:#8b5cf6;"></i> Windows Desktop Apps</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-tree-structure" style="color:#10b981;"></i> State Management</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-pen-nib" style="color:#ec4899;"></i> UI / UX Prototyping</div>
                     </div>
+
+                    <div style="font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Basics & Exploring</div>
                     <div class="skills-wrapper">
-                        <div class="skill-pill"><i class="ph-duotone ph-app-window" style="color:#0ea5e9;"></i> Flutter</div>
-                        <div class="skill-pill"><i class="ph-duotone ph-file-code" style="color:#10b981;"></i> Dart</div>
-                        <div class="skill-pill"><i class="ph-duotone ph-browser" style="color:#f97316;"></i> HTML/CSS</div>
-                        <div class="skill-pill"><i class="ph-duotone ph-plugs" style="color:#8b5cf6;"></i> REST API</div>
-                        <div class="skill-pill"><i class="ph-duotone ph-desktop" style="color:#64748b;"></i> Desktop Apps</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-game-controller" style="color:#f59e0b;"></i> Unity 3D</div>
+                        <div class="skill-pill">C#</div>
+                        <div class="skill-pill">C++</div>
+                        <div class="skill-pill">SQL</div>
+                        <div class="skill-pill">HTML / CSS</div>
                     </div>
                 </div>
 
-                <!-- Beyond the Code Kartı -->
-                <div class="card animate-5" style="padding: 32px; flex: 1;">
-                    <div class="mini-card-title">
-                        <i class="ph-duotone ph-coffee" style="color: #8b5cf6; font-size: 24px;"></i> Beyond the Code
-                    </div>
+                <div class="card animate-5">
+                    <div class="mini-card-title"><i class="ph-duotone ph-coffee" style="color: #8b5cf6; font-size: 20px;"></i> Beyond the Code</div>
                     <ul class="interests-list">
-                        <li><i class="ph-duotone ph-barbell" style="color: #0ea5e9; font-size: 22px;"></i> Strength Training</li>
-                        <li><i class="ph-duotone ph-car-profile" style="color: #f59e0b; font-size: 22px;"></i> Automotive Mechanics</li>
-                        <li><i class="ph-duotone ph-game-controller" style="color: #8b5cf6; font-size: 22px;"></i> Esports & Narratives</li>
+                        <li><i class="ph-duotone ph-barbell" style="color: #0ea5e9; font-size: 18px;"></i> Home Strength Training</li>
+                        <li><i class="ph-duotone ph-cube" style="color: #10b981; font-size: 18px;"></i> Indie Game Development</li>
+                        <li><i class="ph-duotone ph-car-profile" style="color: #f59e0b; font-size: 18px;"></i> Automotive Mechanics</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Seçilen Projeler -->
         <div class="section-title animate-5">
             <i class="ph-duotone ph-folder-star" style="color: #f59e0b;"></i> Selected Projects
         </div>
+        
         <div class="projects-grid animate-5">
-            
             <a href="https://instagram.com/couplestorytr" class="project-card" target="_blank">
                 <div class="project-header">
-                    <div class="project-logo icon-pink">
-                        <i class="ph-duotone ph-heart"></i>
-                    </div>
+                    <div class="project-logo icon-pink"><i class="ph-duotone ph-heart"></i></div>
                     <h3>Couple Story</h3>
                 </div>
                 <p>Relationship tracking application specifically designed for modern mobile devices.</p>
-                <div class="project-tech">
-                    <span>Flutter</span>
-                    <span>Mobile</span>
-                </div>
+                <div class="project-tech"><span>Flutter</span><span>Mobile</span></div>
             </a>
 
             <a href="https://instagram.com/varligimtr" class="project-card" target="_blank">
                 <div class="project-header">
-                    <div class="project-logo icon-green">
-                        <i class="ph-duotone ph-chart-line-up"></i>
-                    </div>
+                    <div class="project-logo icon-green"><i class="ph-duotone ph-chart-line-up"></i></div>
                     <h3>Varlığım</h3>
                 </div>
                 <p>Personal asset and finance tracking application to monitor daily growth.</p>
-                <div class="project-tech">
-                    <span>Flutter</span>
-                    <span>Finance</span>
-                </div>
+                <div class="project-tech"><span>Flutter</span><span>Finance</span></div>
             </a>
 
             <a href="https://instagram.com/kocifykpsstr" class="project-card" target="_blank">
                 <div class="project-header">
-                    <div class="project-logo icon-orange">
-                        <i class="ph-duotone ph-graduation-cap"></i>
-                    </div>
+                    <div class="project-logo icon-orange"><i class="ph-duotone ph-graduation-cap"></i></div>
                     <h3>Kocify KPSS</h3>
                 </div>
                 <p>Comprehensive exam preparation assistant tailored for candidates.</p>
-                <div class="project-tech">
-                    <span>Flutter</span>
-                    <span>Education</span>
-                </div>
+                <div class="project-tech"><span>Flutter</span><span>Education</span></div>
             </a>
-            
         </div>
     </div>
 
