@@ -81,11 +81,20 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
         }
 
-        /* Sol Büyük Kart */
+        /* Sol Büyük Kart ve Profil Fotoğrafı */
+        .profile-img {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 2px solid #e2e8f0;
+        }
+
         .profile-card h1 {
             font-size: 32px;
             font-weight: 700;
-            margin: 16px 0 12px 0;
+            margin: 0 0 12px 0;
             color: #0f172a;
         }
 
@@ -238,6 +247,7 @@
         <div class="grid-container">
             <!-- Sol Profil Kartı -->
             <div class="card profile-card">
+                <img src="profile.jpg" alt="Miraç Büyük" class="profile-img">
                 <h1>Miraç Büyük</h1>
                 <p>Public sector engineer and cross-platform developer. Building clean mobile and desktop applications.</p>
                 
