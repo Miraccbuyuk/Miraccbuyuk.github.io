@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miraç Büyük</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Miraç Büyük — Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         * {
             margin: 0;
@@ -15,219 +16,392 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
+            /* Aydınlık tema için çok hafif, ferah bir arka plan gradyanı */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%);
             color: #0f172a;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
 
         .wrapper {
-            max-width: 900px;
+            max-width: 980px;
             width: 100%;
         }
+
+        /* Animasyonlar */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-1 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-2 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; opacity: 0; }
+        .animate-3 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; opacity: 0; }
+        .animate-4 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0; }
+        .animate-5 { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards; opacity: 0; }
 
         /* Üst Menü */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             padding: 0 10px;
         }
 
         .nav-logo {
-            font-weight: 700;
-            font-size: 18px;
+            font-weight: 800;
+            font-size: 20px;
             color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo i {
+            color: #0ea5e9;
+            font-size: 26px;
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 28px;
             list-style: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
         }
 
         .nav-links a {
             color: #64748b;
             text-decoration: none;
-            transition: color 0.2s;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .nav-links a:hover {
             color: #0f172a;
+            transform: translateY(-2px);
         }
 
-        /* Bento Grid Düzeni */
+        .nav-links i {
+            font-size: 20px;
+        }
+
+        /* Modern Kart Yapısı */
         .grid-container {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 24px;
+            margin-bottom: 48px;
         }
 
         @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
+            .grid-container { grid-template-columns: 1fr; }
         }
 
         .card {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 32px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
         }
 
-        /* Sol Büyük Kart ve Profil Fotoğrafı */
+        .card:hover {
+            border-color: rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sol Profil Kartı */
         .profile-img {
-            width: 96px;
-            height: 96px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 16px;
-            border: 2px solid #e2e8f0;
+            margin-bottom: 24px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.2);
         }
 
         .profile-card h1 {
-            font-size: 32px;
-            font-weight: 700;
+            font-size: 42px;
+            font-weight: 800;
             margin: 0 0 12px 0;
             color: #0f172a;
+            letter-spacing: -1px;
         }
 
         .profile-card p {
-            color: #64748b;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 24px;
+            color: #475569;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 90%;
         }
 
         .role-list {
             list-style: none;
-            margin-bottom: 28px;
+            margin-bottom: 36px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 16px;
         }
 
         .role-list li {
-            font-size: 14px;
-            color: #475569;
+            font-size: 15px;
+            color: #334155;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            font-weight: 600;
         }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+        .role-icon {
+            font-size: 24px;
+            padding: 8px;
+            border-radius: 12px;
         }
+
+        /* Renkli İkon Arka Planları */
+        .icon-blue { color: #0ea5e9; background: #e0f2fe; }
+        .icon-green { color: #10b981; background: #d1fae5; }
+        .icon-purple { color: #8b5cf6; background: #ede9fe; }
+        .icon-pink { color: #ec4899; background: #fce7f3; }
+        .icon-orange { color: #f59e0b; background: #fef3c7; }
 
         .btn-group {
             display: flex;
-            gap: 12px;
+            gap: 16px;
             align-items: center;
         }
 
         .btn-primary {
-            background-color: #0f172a;
+            background: #0f172a;
             color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 12px;
+            padding: 14px 28px;
+            border-radius: 16px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
-            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.4);
         }
 
         .btn-primary:hover {
-            background-color: #334155;
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.5);
         }
 
         .btn-secondary {
-            color: #64748b;
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 14px 28px;
+            border-radius: 16px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
         }
 
         .btn-secondary:hover {
-            color: #0f172a;
+            background: #e2e8f0;
+            transform: translateY(-2px);
         }
 
         /* Sağ Taraf Mini Kartlar */
         .right-column {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
         .mini-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 24px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-pill {
+            background: #f8fafc;
+            color: #334155;
+            padding: 10px 16px;
+            border-radius: 14px;
             font-size: 14px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill i {
+            font-size: 18px;
+        }
+
+        .skill-pill:hover {
+            background: #ffffff;
+            color: #0ea5e9;
+            border-color: #0ea5e9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.1);
+        }
+
+        /* İlgi Alanları Listesi */
+        .interests-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .interests-list li {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 14px 18px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        
+        .interests-list li:hover {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            transform: translateX(4px);
+        }
+
+        /* Projeler Bölümü */
+        .section-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 30px;
             color: #0f172a;
-            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 28px;
+            padding: 32px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #0ea5e9;
+            box-shadow: 0 20px 40px -12px rgba(14, 165, 233, 0.15);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .project-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .project-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .location-box {
-            background: #f1f5f9;
-            border-radius: 16px;
-            padding: 16px;
-            font-weight: 600;
-            font-size: 15px;
-            color: #0f172a;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        /* Projeler Bölümü */
-        .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #0f172a;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 24px;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            border-color: #0f172a;
-        }
-
-        .project-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #0f172a;
-        }
-
         .project-card p {
-            font-size: 14px;
+            font-size: 15px;
             color: #64748b;
-            line-height: 1.5;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+        
+        .project-tech {
+            display: flex;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+        }
+        
+        .project-tech span {
+            background: #f1f5f9;
+            padding: 6px 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
         }
     </style>
 </head>
@@ -235,75 +409,129 @@
 
     <div class="wrapper">
         <!-- Üst Menü -->
-        <nav>
-            <div class="nav-logo">Miraç Büyük</div>
+        <nav class="animate-1">
+            <div class="nav-logo">
+                <i class="ph-duotone ph-code-block"></i> Miraç Büyük
+            </div>
             <ul class="nav-links">
-                <li><a href="https://github.com/miraccbuyuk" target="_blank">GitHub</a></li>
-                <li><a href="https://instagram.com/miraccbuyuk" target="_blank">Instagram</a></li>
+                <li><a href="https://github.com/miraccbuyuk" target="_blank"><i class="ph-duotone ph-github-logo"></i> GitHub</a></li>
+                <li><a href="https://instagram.com/miraccbuyuk" target="_blank"><i class="ph-duotone ph-instagram-logo"></i> Instagram</a></li>
             </ul>
         </nav>
 
         <!-- Bento Grid Alanı -->
         <div class="grid-container">
             <!-- Sol Profil Kartı -->
-            <div class="card profile-card">
+            <div class="card profile-card animate-2">
                 <img src="profile.jpg" alt="Miraç Büyük" class="profile-img">
                 <h1>Miraç Büyük</h1>
-                <p>Public sector engineer and cross-platform developer. Building clean mobile and desktop applications.</p>
+                <p>Public sector engineer and cross-platform developer. Focused on building clean, high-performance mobile and desktop applications.</p>
                 
                 <ul class="role-list">
-                    <li><span class="dot" style="background-color: #3b82f6;"></span> Mobile & Desktop Developer</li>
-                    <li><span class="dot" style="background-color: #eab308;"></span> Flutter & Dart Enthusiast</li>
-                    <li><span class="dot" style="background-color: #ec4899;"></span> UI / UX & Product Builder</li>
+                    <li><i class="ph-duotone ph-device-mobile role-icon icon-blue"></i> Mobile & Desktop Developer</li>
+                    <li><i class="ph-duotone ph-rocket-launch role-icon icon-green"></i> Flutter & Dart Enthusiast</li>
+                    <li><i class="ph-duotone ph-bezier-curve role-icon icon-purple"></i> UI / UX & Product Builder</li>
                 </ul>
 
                 <div class="btn-group">
-                    <a href="https://instagram.com/miraccbuyuk" class="btn-primary" target="_blank">Let's Connect</a>
-                    <a href="https://github.com/miraccbuyuk" class="btn-secondary" target="_blank">GitHub ↗</a>
+                    <a href="https://instagram.com/miraccbuyuk" class="btn-primary" target="_blank">
+                        <i class="ph-duotone ph-paper-plane-tilt"></i> Let's Connect
+                    </a>
+                    <a href="https://github.com/miraccbuyuk" class="btn-secondary" target="_blank">
+                        <i class="ph-duotone ph-arrow-up-right"></i> GitHub
+                    </a>
                 </div>
             </div>
 
             <!-- Sağ Taraf Kartlar -->
             <div class="right-column">
                 <!-- Lokasyon Kartı -->
-                <div class="card">
+                <div class="card animate-3" style="padding: 24px;">
                     <div class="mini-card-title">
-                        <span class="dot" style="background-color: #22c55e;"></span> Location
+                        <i class="ph-duotone ph-map-pin" style="color: #10b981; font-size: 24px;"></i> Based In
                     </div>
                     <div class="location-box">
-                        📍 Ankara, Türkiye
+                        <i class="ph-duotone ph-buildings" style="color: #64748b; font-size: 26px;"></i> Ankara, Türkiye
                     </div>
                 </div>
 
                 <!-- İlgi Alanları / Yetenekler Kartı -->
-                <div class="card">
+                <!-- İlgi Alanları / Yetenekler Kartı -->
+                <div class="card animate-4" style="padding: 32px;">
                     <div class="mini-card-title">
-                        <span class="dot" style="background-color: #f97316;"></span> Expertise
+                        <i class="ph-duotone ph-lightning" style="color: #f59e0b; font-size: 24px;"></i> Tech Stack
                     </div>
-                    <ul class="role-list" style="margin-bottom: 0;">
-                        <li><span class="dot" style="background-color: #3b82f6;"></span> Cross-Platform Apps</li>
-                        <li><span class="dot" style="background-color: #8b5cf6;"></span> State Management</li>
-                        <li><span class="dot" style="background-color: #14b8a6;"></span> Modern Web Design</li>
+                    <div class="skills-wrapper">
+                        <div class="skill-pill"><i class="ph-duotone ph-app-window" style="color:#0ea5e9;"></i> Flutter</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-file-code" style="color:#10b981;"></i> Dart</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-browser" style="color:#f97316;"></i> HTML/CSS</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-plugs" style="color:#8b5cf6;"></i> REST API</div>
+                        <div class="skill-pill"><i class="ph-duotone ph-desktop" style="color:#64748b;"></i> Desktop Apps</div>
+                    </div>
+                </div>
+
+                <!-- Beyond the Code Kartı -->
+                <div class="card animate-5" style="padding: 32px; flex: 1;">
+                    <div class="mini-card-title">
+                        <i class="ph-duotone ph-coffee" style="color: #8b5cf6; font-size: 24px;"></i> Beyond the Code
+                    </div>
+                    <ul class="interests-list">
+                        <li><i class="ph-duotone ph-barbell" style="color: #0ea5e9; font-size: 22px;"></i> Strength Training</li>
+                        <li><i class="ph-duotone ph-car-profile" style="color: #f59e0b; font-size: 22px;"></i> Automotive Mechanics</li>
+                        <li><i class="ph-duotone ph-game-controller" style="color: #8b5cf6; font-size: 22px;"></i> Esports & Narratives</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- Seçilen Projeler -->
-        <div class="section-title">Selected Projects</div>
-        <div class="projects-grid">
+        <div class="section-title animate-5">
+            <i class="ph-duotone ph-folder-star" style="color: #f59e0b;"></i> Selected Projects
+        </div>
+        <div class="projects-grid animate-5">
+            
             <a href="https://instagram.com/couplestorytr" class="project-card" target="_blank">
-                <h3>Couple Story</h3>
-                <p>Relationship tracking application designed for mobile devices.</p>
+                <div class="project-header">
+                    <div class="project-logo icon-pink">
+                        <i class="ph-duotone ph-heart"></i>
+                    </div>
+                    <h3>Couple Story</h3>
+                </div>
+                <p>Relationship tracking application specifically designed for modern mobile devices.</p>
+                <div class="project-tech">
+                    <span>Flutter</span>
+                    <span>Mobile</span>
+                </div>
             </a>
+
             <a href="https://instagram.com/varligimtr" class="project-card" target="_blank">
-                <h3>Varlığım</h3>
-                <p>Personal asset and finance tracking application.</p>
+                <div class="project-header">
+                    <div class="project-logo icon-green">
+                        <i class="ph-duotone ph-chart-line-up"></i>
+                    </div>
+                    <h3>Varlığım</h3>
+                </div>
+                <p>Personal asset and finance tracking application to monitor daily growth.</p>
+                <div class="project-tech">
+                    <span>Flutter</span>
+                    <span>Finance</span>
+                </div>
             </a>
+
             <a href="https://instagram.com/kocifykpsstr" class="project-card" target="_blank">
-                <h3>Kocify KPSS</h3>
-                <p>Comprehensive exam preparation assistant for candidates.</p>
+                <div class="project-header">
+                    <div class="project-logo icon-orange">
+                        <i class="ph-duotone ph-graduation-cap"></i>
+                    </div>
+                    <h3>Kocify KPSS</h3>
+                </div>
+                <p>Comprehensive exam preparation assistant tailored for candidates.</p>
+                <div class="project-tech">
+                    <span>Flutter</span>
+                    <span>Education</span>
+                </div>
             </a>
+            
         </div>
     </div>
 
